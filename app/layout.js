@@ -6,7 +6,11 @@ const queryClient = new QueryClient();
 
 function RootLayout({ children }) {
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <html lang="en">
+        <body className="bg-[#B4B8AF]">{children}</body>
+      </html>
+    </QueryClientProvider>
   );
 }
 

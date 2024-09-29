@@ -1,5 +1,7 @@
+import BookCard from "../_components/BookCard";
+
 function Page() {
-  return <div>123</div>;
+  return <BookCard />;
 }
 
 export default Page;

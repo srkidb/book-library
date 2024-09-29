@@ -2,19 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-
-export async function getBooks(query) {
-  const baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
-  const link = `${baseURL}${query}`;
-  const response = await fetch(link);
-
-  if (!response.ok) {
-    throw new Error("Couldn not get books");
-  }
-  const data = response.json();
-  return data;
-}
+import { getBooks } from "../data/getBooks";
 
 function BooksGrid({ query }) {
   const { data, isLoading, isError } = useQuery({
@@ -32,7 +20,7 @@ function BooksGrid({ query }) {
         ? "Loading..."
         : data?.items.map((item) => {
             return (
-              <Link href="/">
+              <Link href={`${item.id}`}>
                 <div key={item?.id}>
                   <div className="flex justify-center items-center">
                     <Image
@@ -57,9 +45,3 @@ function BooksGrid({ query }) {
 }
 
 export default BooksGrid;
-
-/*
-Image
-Title
-Author
-*/
